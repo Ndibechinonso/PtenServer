@@ -35,27 +35,6 @@ const registerUser = (req, res, next) => {
     })
     .catch((err) => console.log(err, 'err'))
 
-    // User.findOne({email: req.body.email}, (err, user)=>{
-    //     if (err){
-    //         console.log(err)
-    //     }
-
-    //     if(user){
-    //         res.status(400).json({success: false, msg: 'User already exists'})
-    //     }
-    //     else{
-    //         const newUser = new User({ firstName, lastName, email, password });
-    //         newUser.save((err, user) => {
-    //             if (err) {
-    //                 console.log(err);
-    //                 res.status(500).send({success: false, msg: "Error Creating Account, please try again."})
-    //             } else {
-    //                 res.status(200).send({ success: true, msg: 'Account Created Successfully' })
-    //             }
-    //         })
-    //     }
-    // })
-
 }
 
 
