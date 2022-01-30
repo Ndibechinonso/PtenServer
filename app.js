@@ -14,7 +14,7 @@ require('./config/dbconnection')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.set('trust proxy', 1)
 app.use(logger('dev'));
 
 // const allowedOrigins = 'https://pten.netlify.app/' || 'http://localhost:3000';
