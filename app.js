@@ -19,13 +19,13 @@ app.use(logger('dev'));
 
 // const allowedOrigins = 'https://pten.netlify.app/' || 'http://localhost:3000';
 
-// const corsOptions = {
-//   origin: allowedOrigins,
-//   credentials: true,
-// };
-// console.log(corsOptions);
+const corsOptions = {
+  // origin: allowedOrigins,
+  credentials: true,
+};
+console.log(corsOptions);
 
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 
 // app.use((req, res, next) => {
 //   const allowedOrigins = ['https://pten.netlify.app', 'http://localhost:3000'];
@@ -40,7 +40,6 @@ app.use(logger('dev'));
 //   return next();
 // });
 
-app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
