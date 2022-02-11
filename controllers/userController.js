@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-const secret = process.env.MY_SECRET
+const secret = 'mysecretsshhh'
 
 
 const checkToken = (req, res, next) => {
@@ -35,9 +35,7 @@ const registerUser = (req, res, next) => {
         }
     })
     .catch((err) => console.log(err, 'err'))
-
 }
-
 
 
 const authenticateUser = (req, res, next) => {
@@ -76,7 +74,6 @@ const authenticateUser = (req, res, next) => {
 
                     res.cookie('token', [token, payload], {secure: true, httpOnly: true,}).sendStatus(200);
                     // res.cookie('email', payload, { httpOnly: true }).sendStatus(200);
-                    res.send("Hello.");
                 }
             });
         }
@@ -84,9 +81,22 @@ const authenticateUser = (req, res, next) => {
 }
 
 
-// const fetchUser = (req, res, next) => {
-// const email = req.body.token[1]
+const fetchUser = async (req, res, next) => {
+const email = req.cookies.token[1].email
+console.log(email, 'email');
+// User.findOne({email : email})
+// .then(user => {
+//     console.log(user, 'user')
+// })
+// .catch(err =>{
+//     console.log(err, 'error');
+// })
 
-// User.find({email})
-// }
-module.exports = { checkToken, logout, registerUser, authenticateUser }
+try {
+    const user = await User.findOne({email})
+    res.send(user.firstName);
+} catch (error) {
+    console.log(error)
+}
+}
+module.exports = { checkToken, logout, registerUser, authenticateUser, fetchUser }
