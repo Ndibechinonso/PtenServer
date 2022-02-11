@@ -27,9 +27,11 @@ app.use(logger('dev'));
 // console.log(corsOptions);
 
 // app.use(cors(corsOptions))
+const prod_origin = process.env.PROD_ORIGIN
+const dev_origin = process.env.DEV_ORIGIN
 
 app.use((req, res, next) => {
-  const allowedOrigins = ['https://ptenhub.com', 'http://localhost:3000'];
+  const allowedOrigins = [prod_origin, dev_origin];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
